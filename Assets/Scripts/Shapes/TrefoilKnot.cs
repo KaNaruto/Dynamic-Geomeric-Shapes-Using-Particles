@@ -1,21 +1,25 @@
+using Unity.Mathematics;
 using UnityEngine;
 
-public class TrefoilKnot : GeometricObject
+namespace Shapes
 {
-    public override Vector3[] GetPoints()
+    public class TrefoilKnot : GeometricObject
     {
-        Vector3[] positions = new Vector3[DotAmount];
-        for (int i = 0; i < DotAmount; i++)
+        public  override float3[] GetPoints()
         {
-            float t = 2 * Mathf.PI * HaltonSequence(i, 2);
+            float3[] positions = new float3[DotAmount];
+            for (int i = 0; i < DotAmount; i++)
+            {
+                float t = 2 * Mathf.PI * HaltonSequence(i, 2);
 
-            float x = Mathf.Sin(t) + 2 * Mathf.Sin(2 * t);
-            float y = Mathf.Cos(t) - 2 * Mathf.Cos(2 * t);
-            float z = -Mathf.Sin(3 * t);
+                float x = Mathf.Sin(t) + 2 * Mathf.Sin(2 * t);
+                float y = Mathf.Cos(t) - 2 * Mathf.Cos(2 * t);
+                float z = -Mathf.Sin(3 * t);
             
-            positions[i] = new Vector3(x, y, z) * ShapeSize;
-        }
+                positions[i] = new Vector3(x, y, z) * ShapeSize;
+            }
 
-        return positions;
+            return positions;
+        }
     }
 }

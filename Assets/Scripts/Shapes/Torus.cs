@@ -1,24 +1,28 @@
+using Unity.Mathematics;
 using UnityEngine;
 
-public class Torus : GeometricObject
+namespace Shapes
 {
-    public override Vector3[] GetPoints()
+    public class Torus : GeometricObject
     {
-        float MajorRadius = 1.0f; 
-        float MinorRadius = 0.5f; 
-        Vector3[] positions = new Vector3[DotAmount];
-        for (int i = 0; i < DotAmount; i++)
+        public override float3[] GetPoints()
         {
-            float u = 2 * Mathf.PI * HaltonSequence(i, 2);
-            float v = 2 * Mathf.PI * HaltonSequence(i, 3);
+            float majorRadius = 1.0f; 
+            float minorRadius = 0.5f; 
+            float3[] positions = new float3[DotAmount];
+            for (int i = 0; i < DotAmount; i++)
+            {
+                float u = 2 * Mathf.PI * HaltonSequence(i, 2);
+                float v = 2 * Mathf.PI * HaltonSequence(i, 3);
 
-            float x = (MajorRadius + MinorRadius * Mathf.Cos(v)) * Mathf.Cos(u);
-            float y = (MajorRadius + MinorRadius * Mathf.Cos(v)) * Mathf.Sin(u);
-            float z = MinorRadius * Mathf.Sin(v);
+                float x = (majorRadius + minorRadius * Mathf.Cos(v)) * Mathf.Cos(u);
+                float y = (majorRadius + minorRadius * Mathf.Cos(v)) * Mathf.Sin(u);
+                float z = minorRadius * Mathf.Sin(v);
 
-            positions[i] = new Vector3(x, y, z) * ShapeSize;
+                positions[i] = new Vector3(x, y, z) * ShapeSize;
+            }
+
+            return positions;
         }
-
-        return positions;
     }
 }
