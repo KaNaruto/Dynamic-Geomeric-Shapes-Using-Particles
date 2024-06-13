@@ -3,6 +3,7 @@
 # Dynamic Geometric Shapes Using Particles
 
 This project demonstrates the creation and manipulation of dynamic geometric shapes using particles in Unity. It leverages Unity's Data-Oriented Technology Stack (DOTS) for high performance and efficient handling of a large number of particles.
+
 ![Gif1 - Made with Clipchamp (1)](https://github.com/KaNaruto/Dynamic-Geomeric-Shapes-Using-Particles/assets/121254562/cffd31e4-4fa4-4bfe-b4a7-ba34eb289648)
 
 ## Features
